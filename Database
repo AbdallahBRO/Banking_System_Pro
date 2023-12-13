@@ -1,0 +1,16 @@
+// names of users 
+var userNames = mutableMapOf<Int,String>()
+//balance of user
+var userBalances = mutableMapOf<Int,Double>()
+// user of User
+var userUser = mutableMapOf<Any,String>()
+//pass of user
+var userPassList = mutableMapOf<Int,String>()
+//private id for admin 
+var privateIdList = mutableListOf<Int>()
+//user of(user + pass) == private id youbcan gen any data
+var safe = mutableMapOf <String,Int>()
+// check id or account Num 
+var checkId = mutableListOf<Long>()
+//publicIdForBalance
+var publicBalance = mutableMapOf<Any,Double>()
