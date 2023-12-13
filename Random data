@@ -1,0 +1,20 @@
+fun randomNum(dataType: List<Any>, start: Long, end: Long): Long {
+
+    var privateId = (start..end).random()
+    if (dataType.size >= 1) {
+        for (i in 0 until dataType.size) {
+
+            var privateIdNum = dataType[i]
+            if (privateId == privateIdNum) {
+                what == false
+            }
+        }
+    } else {
+        checkId.add(privateId)
+        return privateId
+    }
+    if (what == true) {
+        checkId.add(privateId)
+        return privateId
+    } else return randomNum(dataType, start, end)
+}
