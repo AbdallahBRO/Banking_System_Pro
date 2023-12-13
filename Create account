@@ -1,0 +1,20 @@
+fun createAccount(userName: String, userPass: String):Long{
+    var privateIdUsed = randomNum(privateIdList, 100878767, 999999999).toInt()
+    privateIdList.add(privateIdUsed)
+    userNames[privateIdUsed] = userName
+    userBalances[privateIdUsed] = 0.0
+
+    var publicId = randomNum(checkId, 10086876865775, 99999999999999)
+
+    var privateId = publicId.toString()
+
+    privateId += userPass
+
+    safe[privateId] = privateIdUsed
+
+    userUser[privateIdUsed] = publicId.toString()
+    
+    userPassList[privateIdUsed]=userPass
+    
+    return publicId
+}
