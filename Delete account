@@ -1,0 +1,17 @@
+fun deleteAccount(userId: String, pass: String) {
+    var key = userId
+    key += pass
+    var privateKey = safe[key] ?: -2000
+
+    if (privateKey != -2000) {
+        userNames.remove(privateKey)
+        userBalances.remove(privateKey)
+        userUser.remove(privateKey)
+        userPassList.remove(privateKey)
+        privateIdList.removeAt(privateKey)
+        safe.remove(key)
+        var userIdInt = userId.toInt()
+        checkId.removeAt(userIdInt)
+        publicBalance.remove(userId)
+    }
+}
