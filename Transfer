@@ -1,0 +1,30 @@
+fun transfer(userIdSend: String, pass: String, userIdResive: String, amount: Double) {
+
+    var checkResive = publicBalance[userIdResive] ?: -2000.0
+
+    var check = atmCheck(userIdSend, pass)
+
+    if (check == true && checkResive != -2000.0) {
+
+        var privateKey = userIdSend
+
+        privateKey += pass
+
+        var adminId = safe[privateKey] ?: 2000
+
+        var firstCheck = publicBalance[userIdSend] ?: -2000.0
+
+        userBalances[adminId] = firstCheck
+
+        var sendBalance = publicBalance[userIdSend] ?: -2000.0
+
+        if (sendBalance >= amount) {
+            println("you have New transfer/n from :$userIdSend/n to $userIdResive")
+            var newBalanceSend = sendBalance
+            newBalanceSend -= amount
+            publicBalance[userIdSend] = newBalanceSend
+            checkResive += amount
+            publicBalance[userIdResive] = checkResive
+        }
+    }
+}
