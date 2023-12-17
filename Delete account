@@ -4,6 +4,8 @@ fun deleteAccount(userId: String, pass: String) {
     var privateKey = safe[key] ?: -2000
 
     if (privateKey != -2000) {
+        details.remove(privateKey)
+        publicDetails.remove(userId)
         userNames.remove(privateKey)
         userBalances.remove(privateKey)
         userUser.remove(privateKey)
