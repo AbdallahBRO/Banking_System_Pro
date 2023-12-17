@@ -1,0 +1,4 @@
+fun showDetails(pass: Int) {
+    var showDetails = details[pass] ?: "You don,t have any ......"
+    println(showDetails)
+}
