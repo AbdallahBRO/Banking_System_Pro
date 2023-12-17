@@ -1,0 +1,75 @@
+fun logIn(userId: String, userPass: String) {
+    logIn@ while (true) {
+        var pass = userId
+        pass += userPass
+        var privateKey = safe[pass] ?: -2000
+
+        if (privateKey != -2000) {
+            var det = publicDetails[userId] ?: ""
+            details[privateKey] = det
+            abdo@ while (true) {
+                var printWhatDoNext =
+                    "What you want ? 1_Withdraw\n2_Deposit\n3_transfer\n4_showDetails"
+                println(printWhatDoNext)
+                var whatDoNext = readln()
+
+                when (whatDoNext) {
+                    "1" -> {
+                        try {
+                            println("type amount: ")
+                            var dAmount = readln().toDouble()
+                            atm(userId, userPass, "W", dAmount)
+                        } catch (E: Exception) {
+                            println("you have error in amount ")
+                            continue@abdo
+                        }
+                    }
+                    "2" -> {
+                        try {
+                            println("type amount: ")
+                            var dAmount = readln().toDouble()
+                            atm(userId, userPass, "D", dAmount)
+                        } catch (E: Exception) {
+                            println("you have error in amount ")
+                            continue@abdo
+                        }
+                    }
+                    "3" -> {
+                        println("enter your Id :")
+                        var idSender = readln()
+                        println("type Id for resiver :")
+                        var idReciver = readln()
+                        try {
+                            println("type amount : ")
+                            var amount = readln().toDouble()
+                            var lastPrivateKey = privateKey.toString()
+                            transfer(idSender, lastPrivateKey, idReciver, amount)
+                        } catch (E: Exception) {
+                            println("you have error in amount ")
+                            continue@abdo
+                        }
+                    }
+                    "4" -> {
+                        showDetails(privateKey)
+                    }
+                    else -> {
+                        println("you must select 1/2/3/4 only!")
+                        continue@abdo
+                    }
+                }
+                var next = next()
+                when (next) {
+                    "1" -> {
+                        continue@abdo
+                    }
+                    "2" -> {
+                        break@logIn
+                    }
+                    else -> {
+                        println("you must select 1/2 only!")
+                    }
+                }
+            }
+        }
+    }
+}
