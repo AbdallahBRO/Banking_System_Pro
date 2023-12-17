@@ -3,14 +3,14 @@ fun atm(userId: String, userPass: String, op: String, amount: Double) {
     var check = atmCheck(userId, userPass)
 
     if (check == true) {
-                
+
         var check1 = userId
 
         check1 += userPass
 
         var privateKey = safe[check1] ?: 5 // Integer
-        
-        userBalances[privateKey] = publicBalance[userId] ?:5.0
+
+        userBalances[privateKey] = publicBalance[userId] ?: 5.0
 
         var balance = userBalances[privateKey] ?: 5.0
 
@@ -19,9 +19,14 @@ fun atm(userId: String, userPass: String, op: String, amount: Double) {
                 if (balance >= amount) {
                     var newBalance = balance
                     newBalance -= amount
-                    publicBalance[userId]= newBalance
+                    publicBalance[userId] = newBalance
                     userBalances[privateKey] = newBalance
-                    println("you have New Withdraw /n amount : $amount /n New balance : $balance")
+                    var saveW =
+                        "you have New Withdraw \n amount : $amount \n New balance : $balance\n"
+                    saveDetails(saveW, privateKey)
+                    var newDetW = publicDetails[userId] ?: ""
+                    newDetW += saveW
+                    publicDetails[userId] = newDetW
                 } else {
                     println("You don,t have this amount , your balance is $balance")
                     atm(userId, userPass, op, amount)
@@ -31,8 +36,12 @@ fun atm(userId: String, userPass: String, op: String, amount: Double) {
                 var newBalance = balance
                 newBalance += amount
                 userBalances[privateKey] = newBalance
-                publicBalance[userId]= newBalance
-                println("you have New deposit /n amount: $amount /n New balance : $newBalance")
+                publicBalance[userId] = newBalance
+                var saveD = "you have New deposit \n amount: $amount \n New balance : $newBalance\n"
+                saveDetails(saveD, privateKey)
+                var newDetD = publicDetails[userId] ?: ""
+                newDetD += saveD
+                publicDetails[userId] = newDetD
             }
         }
     }
