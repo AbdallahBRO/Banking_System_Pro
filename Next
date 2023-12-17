@@ -1,0 +1,15 @@
+fun next(): String {
+    println("what do you want Now ? 1_Continue\n2_sign out")
+    var next = readln()
+    return when (next) {
+        "1" -> {
+            "1"
+        }
+        "2" -> {
+            "2"
+        }
+        else -> {
+            next()
+        }
+    }
+}
