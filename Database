@@ -14,3 +14,7 @@ var safe = mutableMapOf <String,Int>()
 var checkId = mutableListOf<Long>()
 //publicIdForBalance
 var publicBalance = mutableMapOf<Any,Double>()
+//sabe Details
+var details = mutableMapOf<Int,String>()
+//public Details
+var publicDetails = mutableMapOf<Any,String>()
