@@ -1,0 +1,5 @@
+fun saveDetails(newDetails: String, pass: Int) {
+    var varDetails = details[pass] ?: ""
+    varDetails += newDetails
+    details[pass] = varDetails
+}
