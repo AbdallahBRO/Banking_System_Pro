@@ -19,12 +19,21 @@ fun transfer(userIdSend: String, pass: String, userIdResive: String, amount: Dou
         var sendBalance = publicBalance[userIdSend] ?: -2000.0
 
         if (sendBalance >= amount) {
-            println("you have New transfer/n from :$userIdSend/n to $userIdResive")
+            var text = "you have New transfer/n from :$userIdSend/n to $userIdResive"
+            println(text)
             var newBalanceSend = sendBalance
             newBalanceSend -= amount
             publicBalance[userIdSend] = newBalanceSend
             checkResive += amount
             publicBalance[userIdResive] = checkResive
+            saveDetails(text, adminId)
+            var reciverText = "you have recived New balance \n amount : $amount"
+            var oldText = publicDetails[userIdResive] ?: ""
+            oldText += reciverText
+            publicDetails[userIdResive] = oldText
+        } else {
+            println("you don,t have this amount in your account \n your balance : $sendBalance")
+            transfer(userIdSend, pass, userIdResive, amount)
         }
     }
 }
